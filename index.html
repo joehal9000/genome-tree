@@ -25,15 +25,13 @@
 				for (var i = 0; i < animals.length; i++) {
 					animals[i][0].onClick = function() {
 						console.log("CLICK");
-					};
-
+					};//END onCick
 					animals[i][0].onMouseEnter = function() {
 						var point = new Point(0, -4);
 						this.position += point;
 						this.shadowColor = this.firstChild.fillColor;
 						this.shadowBlur = "12";
 					}; //END enter
-
 					animals[i][0].onMouseLeave = function() {
 						var point = new Point(0, 4);
 						this.position += point;
