@@ -7,9 +7,9 @@
 <head>
 	<script type="text/javascript" src="paper.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
-		// TODO: Fix the SVG, possibly a result of weird masking.   
+		// TODO: Fix the SVG, possibly a result of weird masking.
 		var animalNames = ["elephant", "echinops", "kangaroo"];
-		var svgX1 = project.importSVG("http://vm.local/genomic-tree-11h-x7.svg",
+		var svgX1 = project.importSVG("https://joehal9000.github.io/genome-tree/genomic-tree-11h-x7.svg",
 			onLoad = function() {
 				console.log('Sucessfully loaded SVG!');
 				var tree = project.getItems({name: "tree"}); //All the animals are in this layer
