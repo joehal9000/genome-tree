@@ -1,11 +1,11 @@
 <!--Wajdi Halabi -->
 <!--July 2018 -->
 <!--Tangviz- Clemson University -->
-<!--Provide Paper.JS functionality to OrthoMom figure -->
+<!--Provide Paper.JS functionality to Orthomam figure -->
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="paper.js"></script>
+	<script type="text/javascript" src="https://joehal9000.github.io/genome-tree/paper.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
 		// TODO: Fix the SVG, possibly a result of weird masking.
 		var animalNames = ["elephant", "echinops", "kangaroo"];
@@ -21,10 +21,11 @@
 					if(item.length) animals.push(item); //Only put in array if found
 					else console.log(animalNames[i]);   //otherwise log the unfound animal
 				}
+
 				//Add interactive features
 				for (var i = 0; i < animals.length; i++) {
 					animals[i][0].onClick = function() {
-						console.log("CLICK");
+					console.log("CLICK");
 					};//END onCick
 					animals[i][0].onMouseEnter = function() {
 						var point = new Point(0, -4);
