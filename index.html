@@ -1,0 +1,53 @@
+<!--Wajdi Halabi -->
+<!--July 2018 -->
+<!--Tangviz- Clemson University -->
+<!--Provide Paper.JS functionality to OrthoMom figure -->
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="paper.js"></script>
+	<script type="text/paperscript" canvas="myCanvas">
+		// TODO: Fix the SVG, possibly a result of weird masking.   
+		var animalNames = ["elephant", "echinops", "kangaroo"];
+		var svgX1 = project.importSVG("http://vm.local/genomic-tree-11h-x7.svg",
+			onLoad = function() {
+				console.log('Sucessfully loaded SVG!');
+				var tree = project.getItems({name: "tree"}); //All the animals are in this layer
+
+				//Loop through the animal names and find them in the SVG file
+				var animals = [];
+				for (var i = 0; i < animalNames.length; i++){
+					var item = tree[0].getItems({name: animalNames[i]})
+					if(item.length) animals.push(item); //Only put in array if found
+					else console.log(animalNames[i]);   //otherwise log the unfound animal
+				}
+				//Add interactive features
+				for (var i = 0; i < animals.length; i++) {
+					animals[i][0].onClick = function() {
+						console.log("CLICK");
+					};
+
+					animals[i][0].onMouseEnter = function() {
+						var point = new Point(0, -4);
+						this.position += point;
+						this.shadowColor = this.firstChild.fillColor;
+						this.shadowBlur = "12";
+					}; //END enter
+
+					animals[i][0].onMouseLeave = function() {
+						var point = new Point(0, 4);
+						this.position += point;
+						this.shadowColor = null;
+					}; //end Leave
+				} //end for loop
+
+			} //
+		);
+	</script>
+</head>
+<body>
+	<canvas
+		id="myCanvas" width="1000" height="1000">
+	</canvas>
+</body>
+</html>
