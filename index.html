@@ -8,7 +8,8 @@
 	<script type="text/javascript" src="paper.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
 		// TODO: Fix the SVG, possibly a result of weird masking.
-		var svgX1 = project.importSVG("http://vm.local/genomic-tree-v2.svg",
+		// var svgX1 = project.importSVG("http://vm.local/genomic-tree-v2.svg",
+		var svgX1 = project.importSVG("https://joehal9000.github.io/genome-tree/genomic-tree-v2.svg",
 			onLoad = function() {
 				console.log('Sucessfully loaded SVG!');
 				var animals = project.getItems({name: "animals"}); //All the animals are in this layer
