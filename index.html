@@ -12,32 +12,36 @@
 		function hover(){
 			console.log("hover!");
 		}
-		var svgX1 = project.importSVG("https:/vm.local/genomic-tree-v5.svg",
+		var svgX1 = project.importSVG("http:/vm.local/genomic-tree-v5.svg",
 			onLoad = function() {
 				console.log('Sucessfully loaded SVG!');
-				var animals = project.getItems({name: "Text"}); //All the animals are in this layer
-				console.log(animals[0].children.length);
+				var top = project.getItems({name: "top"}); //All the animals are in this layer
+				var bottom = project.getItems({name: "bottom"}); //All the animals are in this layer
+				// console.log(animals[0].children.length);
 
 
 				//Add interactive features
-				var origColor = animals[0].children[0].firstChild.fillColor;
-				var len = animals[0].children.length ;
+				var origColor = bottom[0].children[0].fillColor;
+				var len = top[0].children.length ;
 				for (i = 0; i < len; i++) {
-					animals[0].children[i].onClick = function() {
-						this.firstChild.fillColor = this.isClicked ? origColor : new Color(0,1,0);
+					top[0].children[i].bottom = bottom[0].children[i];
+					console.log(top[0].children[i].bottom);
+					// top[0].children[i].bottom.fillColor = "#FF0000"
+					top[0].children[i].onClick = function() {
+						this.bottom.fillColor = this.isClicked ? origColor : new Color(0,1,0);
 						this.isClicked = !this.isClicked;
 						// this.lastChild.stroke = 10;
 					};//END onCicked
-					animals[0].children[i].onMouseEnter = function() {
-						var point = new Point(0, -4);
+					top[0].children[i].onMouseEnter = function() {
+						// var point = new Point(0, -4);
 						// this.position += point;
-						this.firstChild.fillColor = "#90d986";
+						this.bottom.fillColor = "#FF0000";
 						// this.shadowOffset = new Point(5,5)
 						// this.shadowColor = this.firstChild.fillColor;
 						// this.shadowBlur = "12";
 					}; //END enter
-					animals[0].children[i].onMouseLeave = function() {
-						this.firstChild.fillColor = !this.isClicked ? origColor : new Color(0,1,0);
+					top[0].children[i].onMouseLeave = function() {
+						this.bottom.fillColor = !this.isClicked ? origColor : new Color(0,1,0);
 						// var point = new Point(0, 4);
 						// this.position += point;
 						// this.shadowColor = null;
